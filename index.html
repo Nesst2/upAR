@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+    ></script>
+    <title>WEB AR with Multiple Objects</title>
+    <style>
+      /* Resetting default margins and padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Basic body and container styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+      }
+
+      #object-selection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+        max-width: 1000px;
+      }
+
+      .object-item {
+        cursor: pointer;
+        text-align: center;
+        padding: 15px;
+        width: 150px;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .object-item:hover {
+        transform: scale(1.05);
+      }
+
+      .object-item model-viewer {
+        width: 120px;
+        height: 120px;
+      }
+
+      #model-container {
+        display: none;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
+
+      #ar-button {
+        width: 120px;
+        height: 50px;
+        position: absolute;
+        bottom: 30px;
+        background-color: #34ae9f;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+
+      #ar-button:hover {
+        background-color: #2b8a74;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Halaman Awal: Menampilkan 8 objek kecil -->
+    <div id="object-selection">
+      <h2>Furniture</h2>
+      <div class="object-item" data-model="models/accent_chest_free.glb">
+        <model-viewer
+          src="models/accent_chest_free.glb"
+          alt="Lemari"
+          camera-controls
+          touch-action="pan-y"
+          ar
+          scale="0.2 0.2 0.2"
+        ></model-viewer>
+        <p>Lemari - 1</p>
+      </div>
+      <div class="object-item" data-model="models/armchair.glb">
+        <model-viewer
+          src="models/armchair.glb"
+          alt="Kursi"
+          camera-controls
+          touch-action="pan-y"
+          ar
+          scale="0.2 0.2 0.2"
+        ></model-viewer>
+        <p>Kursi Santai</p>
+      </div>
+      <div class="object-item" data-model="models/coffee_table.glb">
+        <model-viewer
+          src="models/coffee_table.glb"
+          alt="Meja"
+          camera-controls
+          touch-action="pan-y"
+          ar
+          scale="0.2 0.2 0.2"
+        ></model-viewer>
+        <p>Meja Makan</p>
+      </div>
+      <div class="object-item" data-model="models/himmelsnas_armchair.glb">
+        <model-viewer
+          src="models/himmelsnas_armchair.glb"
+          alt="Sofa"
+          camera-controls
+          touch-action="pan-y"
+          ar
+          scale="0.2 0.2 0.2"
+        ></model-viewer>
+        <p>Kursi Jaring</p>
+      </div>
+    </div>
+
+    <!-- Halaman Setelah Memilih Object: Model Viewer untuk full review -->
+    <div id="model-container">
+      <model-viewer
+        id="viewer"
+        src=""
+        style="width: 100%; height: 100%"
+        shadow-intensity="1"
+        camera-controls
+        touch-action="pan-y"
+        ar
+        scale="0.1 0.1 0.1"
+      >
+        <button id="ar-button" slot="ar-button">Start AR</button>
+      </model-viewer>
+    </div>
+
+    <script>
+      const objectItems = document.querySelectorAll(".object-item");
+      const modelContainer = document.querySelector("#model-container");
+      const modelViewer = document.querySelector("#viewer");
+      const objectSelection = document.querySelector("#object-selection");
+
+      // Fungsi untuk menampilkan model 3D ketika objek dipilih
+      objectItems.forEach((item) => {
+        item.addEventListener("click", (event) => {
+          const selectedModel = event.currentTarget.getAttribute("data-model");
+
+          // Menyembunyikan menu pemilihan dan menampilkan model viewer
+          objectSelection.style.display = "none";
+          modelContainer.style.display = "flex";
+
+          // Mengatur model yang akan ditampilkan
+          modelViewer.setAttribute("src", selectedModel);
+        });
+      });
+    </script>
+  </body>
+</html>
