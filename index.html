@@ -8,149 +8,117 @@
       src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
     ></script>
     <title>WEB AR with Multiple Objects</title>
-    <style>
-      /* Resetting default margins and padding */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      /* Basic body and container styling */
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
-        padding: 20px;
-      }
-
-      h2 {
-        margin-bottom: 20px;
-        font-size: 24px;
-        color: #333;
-      }
-
-      #object-selection {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        width: 100%;
-        max-width: 1000px;
-      }
-
-      .object-item {
-        cursor: pointer;
-        text-align: center;
-        padding: 15px;
-        width: 150px;
-        border-radius: 10px;
-        background-color: white;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
-
-      .object-item:hover {
-        transform: scale(1.05);
-      }
-
-      .object-item model-viewer {
-        width: 120px;
-        height: 120px;
-      }
-
-      #model-container {
-        display: none;
-        width: 100vw;
-        height: 100vh;
-        background-color: white;
-        position: fixed;
-        top: 0;
-        left: 0;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-      }
-
-      #ar-button {
-        width: 120px;
-        height: 50px;
-        position: absolute;
-        bottom: 30px;
-        background-color: #34ae9f;
-        color: white;
-        border: none;
-        font-size: 16px;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-      }
-
-      #ar-button:hover {
-        background-color: #2b8a74;
-      }
-    </style>
   </head>
   <body>
     <!-- Halaman Awal: Menampilkan 8 objek kecil -->
     <div id="object-selection">
       <h2>Furniture</h2>
-      <div class="object-item" data-model="models/accent_chest_free.glb">
-        <model-viewer
-          src="models/accent_chest_free.glb"
-          alt="Lemari"
-          camera-controls
-          touch-action="pan-y"
-          ar
-          scale="0.2 0.2 0.2"
-        ></model-viewer>
-        <p>Lemari - 1</p>
-      </div>
-      <div class="object-item" data-model="models/armchair.glb">
-        <model-viewer
-          src="models/armchair.glb"
-          alt="Kursi"
-          camera-controls
-          touch-action="pan-y"
-          ar
-          scale="0.2 0.2 0.2"
-        ></model-viewer>
-        <p>Kursi Santai</p>
-      </div>
-      <div class="object-item" data-model="models/coffee_table.glb">
-        <model-viewer
-          src="models/coffee_table.glb"
-          alt="Meja"
-          camera-controls
-          touch-action="pan-y"
-          ar
-          scale="0.2 0.2 0.2"
-        ></model-viewer>
-        <p>Meja Makan</p>
-      </div>
-      <div class="object-item" data-model="models/himmelsnas_armchair.glb">
-        <model-viewer
-          src="models/himmelsnas_armchair.glb"
-          alt="Sofa"
-          camera-controls
-          touch-action="pan-y"
-          ar
-          scale="0.2 0.2 0.2"
-        ></model-viewer>
-        <p>Kursi Jaring</p>
+      <div id="objects-list">
+        <div class="object-item" data-model="models/accent_chest_free.glb">
+          <model-viewer
+            src="models/accent_chest_free.glb"
+            alt="Chair"
+            style="width: 150px; height: 150px"
+            camera-controls
+            touch-action="pan-y"
+            ar
+            scale="0.2 0.2 0.2"
+          ></model-viewer>
+          <p>Lemari - 1</p>
+        </div>
+        <div class="object-item" data-model="models/armchair.glb">
+          <model-viewer
+            src="models/armchair.glb"
+            alt="Kursi"
+            style="width: 150px; height: 150px"
+            camera-controls
+            touch-action="pan-y"
+            ar
+            scale="0.2 0.2 0.2"
+          ></model-viewer>
+          <p>Kursi Santai</p>
+        </div>
+        <div class="object-item" data-model="models/coffee_table.glb">
+          <model-viewer
+            src="models/coffee_table.glb"
+            alt="Lamp"
+            style="width: 150px; height: 150px"
+            camera-controls
+            touch-action="pan-y"
+            ar
+            scale="0.2 0.2 0.2"
+          ></model-viewer>
+          <p>Meja Makan</p>
+        </div>
+        <div class="object-item" data-model="models/himmelsnas_armchair.glb">
+          <model-viewer
+            src="models/himmelsnas_armchair.glb"
+            alt="Sofa"
+            style="width: 150px; height: 150px"
+            camera-controls
+            touch-action="pan-y"
+            ar
+            scale="0.2 0.2 0.2"
+          ></model-viewer>
+          <p>Kursi Jaring</p>
+        </div>
+        <div class="object-item" data-model="models/kungshult_3-seater_sofa.glb">
+          <model-viewer
+            src="models/kungshult_3-seater_sofa.glb"
+            alt="Lemari"
+            style="width: 150px; height: 150px"
+            camera-controls
+            touch-action="pan-y"
+            ar
+            scale="0.2 0.2 0.2"
+          ></model-viewer>
+          <p>Sofa - 1</p>
+        </div>
+        <div class="object-item" data-model="models/leather_3_person_modern_couch.glb">
+            <model-viewer
+              src="models/leather_3_person_modern_couch.glb"
+              alt="Lemari"
+              style="width: 150px; height: 150px"
+              camera-controls
+              touch-action="pan-y"
+              ar
+              scale="0.2 0.2 0.2"
+            ></model-viewer>
+            <p>Sofa - 2</p>
+        </div>
+        <div class="object-item" data-model="models/modern_cabinet_hutch_free.glb">
+            <model-viewer
+              src="models/modern_cabinet_hutch_free.glb"
+              alt="Lemari"
+              style="width: 150px; height: 150px"
+              camera-controls
+              touch-action="pan-y"
+              ar
+              scale="0.2 0.2 0.2"
+            ></model-viewer>
+            <p>Lemari</p>
+        </div>
+        <div class="object-item" data-model="models/old_leather_office_chair.glb">
+            <model-viewer
+              src="models/old_leather_office_chair.glb"
+              alt="Lemari"
+              style="width: 150px; height: 150px"
+              camera-controls
+              touch-action="pan-y"
+              ar
+              scale="0.2 0.2 0.2"
+            ></model-viewer>
+            <p>Kursi Kantor</p>
+        </div>
       </div>
     </div>
 
     <!-- Halaman Setelah Memilih Object: Model Viewer untuk full review -->
-    <div id="model-container">
+    <div id="model-container" style="display: none">
       <model-viewer
         id="viewer"
         src=""
-        style="width: 100%; height: 100%"
+        style="width: 100vw; height: 90vh"
         shadow-intensity="1"
         camera-controls
         touch-action="pan-y"
@@ -160,6 +128,65 @@
         <button id="ar-button" slot="ar-button">Start AR</button>
       </model-viewer>
     </div>
+
+    <style>
+      #ar-button {
+        width: 120px;
+        height: 60px;
+        position: absolute;
+        left: 32%;
+        bottom: 35px;
+        background-color: rgb(52, 87, 87);
+        color: white;
+        border: none;
+        font-size: 15px;
+        border-radius: 10px;
+      }
+
+      .object-item {
+        cursor: pointer;
+        text-align: center;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 250px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .object-item:hover {
+        transform: scale(1.1);
+      }
+
+      #object-selection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      #objects-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .object-item model-viewer {
+        border-radius: 10px;
+        width: 200px;
+        height: 200px;
+        max-width: 100%;
+        max-height: 100%;
+      }
+    </style>
 
     <script>
       const objectItems = document.querySelectorAll(".object-item");
@@ -174,7 +201,7 @@
 
           // Menyembunyikan menu pemilihan dan menampilkan model viewer
           objectSelection.style.display = "none";
-          modelContainer.style.display = "flex";
+          modelContainer.style.display = "block";
 
           // Mengatur model yang akan ditampilkan
           modelViewer.setAttribute("src", selectedModel);
